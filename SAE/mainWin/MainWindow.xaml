@@ -1,0 +1,62 @@
+﻿<Window x:Class="mainWin.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Name="MainWin"
+        Title="SAE" Width="1920" Height="1080">
+    
+    <Grid ShowGridLines="True" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="*" MinWidth="300"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="2*" MinWidth="300"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!--Sidebar-->
+        <Grid ShowGridLines="True" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0"></StackPanel>
+        </Grid>
+
+        <!--Splitter-->
+        <GridSplitter Grid.Column="2" ShowsPreview="False" Width="5" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+
+        <!--InformationPanel-->
+        <Grid Grid.Column="1" ShowGridLines="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="1" Grid.Row="2" DockPanel.Dock="Right" Content="Удалить" FontSize="20"></Button>
+            <Button Grid.Column="0" Grid.Row="2" DockPanel.Dock="Left" Content="Изминить" FontSize="20"></Button>
+        </Grid>
+
+        <!--ListAndSearch-->
+        <Grid Grid.Column="3" ShowGridLines="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="100"></ColumnDefinition>
+                <ColumnDefinition Width="30"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="2" FontSize="20" Content="Фильтры"></Button>
+        </Grid>
+    </Grid>
+</Window>
