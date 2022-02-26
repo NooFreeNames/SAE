@@ -1,0 +1,16 @@
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\bin\Debug\net6.0-windows\ControlLib.deps.json
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\bin\Debug\net6.0-windows\ControlLib.dll
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\bin\Debug\net6.0-windows\ControlLib.pdb
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\ControlLib.csproj.AssemblyReference.cache
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\InfoPanel.g.cs
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\ControlLib_MarkupCompile.cache
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\InfoPanel.baml
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\ControlLib.g.resources
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\ControlLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\ControlLib.AssemblyInfoInputs.cache
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\ControlLib.AssemblyInfo.cs
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\ControlLib.csproj.CoreCompileInputs.cache
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\ControlLib.dll
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\refint\ControlLib.dll
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\ControlLib.pdb
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\ref\ControlLib.dll

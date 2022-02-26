@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="SidebarStyle">
+        <Setter Property="ItemsControl.Background">
+            <Setter.Value>
+                <SolidColorBrush Color="{StaticResource SidebarBackground}"></SolidColorBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

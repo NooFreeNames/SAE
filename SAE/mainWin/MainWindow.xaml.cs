@@ -12,26 +12,65 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.EntityFrameworkCore;
+using System.Configuration;
+using System.Collections.Specialized;
+using mainWin.Pages;
 
 namespace mainWin
 {
     public partial class MainWindow : Window
     {
+        NameValueCollection Config => ConfigurationManager.AppSettings;
+
         public MainWindow()
         {
             InitializeComponent();
-            const float sizeFactor = 0.7F;
-            double ScreenW = SystemParameters.PrimaryScreenWidth;
-            double ScreenH = SystemParameters.PrimaryScreenHeight;
+            
+            /* Setting the window size */
+            double screenW = SystemParameters.PrimaryScreenWidth;
+            double screenH = SystemParameters.PrimaryScreenHeight;
+            if (!float.TryParse(Config.Get("WinSizeCoeff"), out float winSizeCoeff)) { winSizeCoeff = 0.5f; }
+            MainWin.Width = screenW * winSizeCoeff;
+            MainWin.Height = screenH * winSizeCoeff;
 
-            /*Setting the window size*/
-            MainWin.Width = ScreenW * sizeFactor;
-            MainWin.Height = ScreenH * sizeFactor;
+            /* Setting the window in the center of the screen */
+            MainWin.Left = (screenW - MainWin.Width) / 2;
+            MainWin.Top = (screenH - MainWin.Height) / 2;
 
-            /*Setting the window in the center of the screen*/
-            MainWin.Left = (ScreenW - MainWin.Width) / 2;
-            MainWin.Top = (ScreenH - MainWin.Height) / 2;
+            MainFrame.Content = new MainPage();
+        }
+
+        private void GoToMainPage(object sender, RoutedEventArgs e)
+        {
+            if(MainFrame.Content.GetType() != typeof(MainPage))
+            {
+                MainFrame.Content = new MainPage();
+            }
+        }
+
+        private void GoToAddingCosmicBodyPage(object sender, RoutedEventArgs e)
+        {
+            if (MainFrame.Content.GetType() != typeof(AddingCosmicBodyPage))
+            {
+                MainFrame.Content = new AddingCosmicBodyPage();
+            }
+        }
+
+        private void GoToSettingsPage(object sender, RoutedEventArgs e)
+        {
+            if (MainFrame.Content.GetType() != typeof(SettingsPage))
+            {
+                MainFrame.Content = new SettingsPage();
+            }
+        }
+
+        private void GoToProfilePage(object sender, RoutedEventArgs e)
+        {
+            if (MainFrame.Content.GetType() != typeof(ProfilePage))
+            {
+                MainFrame.Content = new ProfilePage();
+            }
         }
     }
-
 }

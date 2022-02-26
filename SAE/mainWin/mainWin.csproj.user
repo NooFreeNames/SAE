@@ -7,7 +7,57 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Pages\AddingCosmicBodyPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\MainPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\ProfilePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\SettingsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="ResourceDictionarys\ButtonStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ResourceDictionarys\Colors.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ResourceDictionarys\CosmicBodyNameStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ResourceDictionarys\GridSplitterStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ResourceDictionarys\ListViewStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ResourceDictionarys\PageStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\AddingCosmicBodyPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\MainPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\ProfilePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ResourceDictionarys\SidebarStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ResourceDictionarys\WindowStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

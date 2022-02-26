@@ -1,0 +1,16 @@
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\bin\Debug\net6.0-windows\WPFControlLib.deps.json
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\bin\Debug\net6.0-windows\WPFControlLib.dll
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\bin\Debug\net6.0-windows\WPFControlLib.pdb
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\WPFControlLib.csproj.AssemblyReference.cache
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\InfoPanel.baml
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\InfoPanel.g.cs
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\WPFControlLib_MarkupCompile.cache
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\WPFControlLib.g.resources
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\WPFControlLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\WPFControlLib.AssemblyInfoInputs.cache
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\WPFControlLib.AssemblyInfo.cs
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\WPFControlLib.csproj.CoreCompileInputs.cache
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\WPFControlLib.dll
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\refint\WPFControlLib.dll
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\WPFControlLib.pdb
+C:\Users\Study\Desktop\project_SAE\SAE\ControlLib\obj\Debug\net6.0-windows\ref\WPFControlLib.dll

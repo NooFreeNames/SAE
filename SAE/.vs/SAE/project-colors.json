@@ -10,7 +10,32 @@
       "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
       "DisplayName": "Прочие файлы",
       "ColorIndex": -1
+    },
+    "b9167044-82c3-44b7-9bb4-b667a6c49d5c": {
+      "ProjectGuid": "b9167044-82c3-44b7-9bb4-b667a6c49d5c",
+      "DisplayName": "ConsoleApp1",
+      "ColorIndex": 1
+    },
+    "12ca781e-10ce-4284-b26b-409336e9ed5a": {
+      "ProjectGuid": "12ca781e-10ce-4284-b26b-409336e9ed5a",
+      "DisplayName": "mainWin",
+      "ColorIndex": 2
+    },
+    "8cd3226b-501c-4039-942f-b292bf4e2c9c": {
+      "ProjectGuid": "8cd3226b-501c-4039-942f-b292bf4e2c9c",
+      "DisplayName": "WpfControlLibrary",
+      "ColorIndex": 3
+    },
+    "f79efa21-11fb-40b6-ad02-7748f39bd8c9": {
+      "ProjectGuid": "f79efa21-11fb-40b6-ad02-7748f39bd8c9",
+      "DisplayName": "WpfCustomControlLibrary1",
+      "ColorIndex": 4
+    },
+    "d9a5c874-ac9b-4dde-b4e4-1e15f840fb44": {
+      "ProjectGuid": "d9a5c874-ac9b-4dde-b4e4-1e15f840fb44",
+      "DisplayName": "WpfControlLibrary",
+      "ColorIndex": 5
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 6
 }
