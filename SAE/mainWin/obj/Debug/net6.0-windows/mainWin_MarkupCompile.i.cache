@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\Study\Desktop\project_SAE\SAE\mainWin\App.xaml
 131074270309
 
-21-752904815
-208-303249740
+22-1991725351
+208-177831317
 MainWindow.xaml;Pages\AddingCosmicBodyPage.xaml;Pages\MainPage.xaml;Pages\ProfilePage.xaml;Pages\SettingsPage.xaml;ResourceDictionarys\ButtonStyle.xaml;ResourceDictionarys\Colors.xaml;ResourceDictionarys\CosmicBodyNameStyle.xaml;ResourceDictionarys\GridSplitterStyle.xaml;ResourceDictionarys\ListViewStyle.xaml;ResourceDictionarys\PageStyle.xaml;ResourceDictionarys\SidebarStyle.xaml;ResourceDictionarys\WindowStyle.xaml;
 
-True
+False
 

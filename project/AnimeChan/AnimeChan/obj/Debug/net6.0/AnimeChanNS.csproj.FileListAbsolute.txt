@@ -1,0 +1,15 @@
+C:\Users\Study\Desktop\project_SAE\project\AnimeChan\AnimeChan\bin\Debug\net6.0\AnimeChanNS.exe
+C:\Users\Study\Desktop\project_SAE\project\AnimeChan\AnimeChan\bin\Debug\net6.0\AnimeChanNS.deps.json
+C:\Users\Study\Desktop\project_SAE\project\AnimeChan\AnimeChan\bin\Debug\net6.0\AnimeChanNS.runtimeconfig.json
+C:\Users\Study\Desktop\project_SAE\project\AnimeChan\AnimeChan\bin\Debug\net6.0\AnimeChanNS.dll
+C:\Users\Study\Desktop\project_SAE\project\AnimeChan\AnimeChan\bin\Debug\net6.0\AnimeChanNS.pdb
+C:\Users\Study\Desktop\project_SAE\project\AnimeChan\AnimeChan\obj\Debug\net6.0\AnimeChanNS.csproj.AssemblyReference.cache
+C:\Users\Study\Desktop\project_SAE\project\AnimeChan\AnimeChan\obj\Debug\net6.0\AnimeChanNS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Study\Desktop\project_SAE\project\AnimeChan\AnimeChan\obj\Debug\net6.0\AnimeChanNS.AssemblyInfoInputs.cache
+C:\Users\Study\Desktop\project_SAE\project\AnimeChan\AnimeChan\obj\Debug\net6.0\AnimeChanNS.AssemblyInfo.cs
+C:\Users\Study\Desktop\project_SAE\project\AnimeChan\AnimeChan\obj\Debug\net6.0\AnimeChanNS.csproj.CoreCompileInputs.cache
+C:\Users\Study\Desktop\project_SAE\project\AnimeChan\AnimeChan\obj\Debug\net6.0\AnimeChanNS.dll
+C:\Users\Study\Desktop\project_SAE\project\AnimeChan\AnimeChan\obj\Debug\net6.0\refint\AnimeChanNS.dll
+C:\Users\Study\Desktop\project_SAE\project\AnimeChan\AnimeChan\obj\Debug\net6.0\AnimeChanNS.pdb
+C:\Users\Study\Desktop\project_SAE\project\AnimeChan\AnimeChan\obj\Debug\net6.0\AnimeChanNS.genruntimeconfig.cache
+C:\Users\Study\Desktop\project_SAE\project\AnimeChan\AnimeChan\obj\Debug\net6.0\ref\AnimeChanNS.dll

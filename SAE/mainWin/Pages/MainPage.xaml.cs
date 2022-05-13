@@ -23,7 +23,6 @@ namespace mainWin
     /// </summary>
     public partial class MainPage : Page
     {
-        NameValueCollection Config => ConfigurationManager.AppSettings;
         DbContextOptions<SAEDBContext> Options { get; set; }
 
         public MainPage()
@@ -32,35 +31,29 @@ namespace mainWin
             DataContext = this;
 
             /* Configuring the database connection */
-            string connectionString = Config.Get("ConnectionString") ?? "";
-            string serverVersion = Config.Get("ServerVersion") ?? "";
             var optionsBuilder = new DbContextOptionsBuilder<SAEDBContext>()
-                .UseMySql(connectionString, ServerVersion.Parse(serverVersion))
+                .UseMySql(AppConfig.ConnectionString, ServerVersion.Parse(AppConfig.ServerVersion))
                 .EnableDetailedErrors(true);
             Options = optionsBuilder.Options;
 
-            /* Putting the stars in the ListView */
-            using var db = new SAEDBContext(Options);
-            var stars = db.Exoplanets.ToList();
-            foreach (var s in stars)
-            {
-                s.DetectionMethodNavigation = db.ExoplanetDetectionMethods.FirstOrDefault(x => x.Id == s.DetectionMethod);
-                s.DiscovererNavigation = db.Discoverers.FirstOrDefault(x => x.Id == s.Discoverer);
-                s.TypeNavigation = db.ExoplanetTypes.FirstOrDefault(x => x.Id == s.Type);
-                s.UserNavigation = db.Users.FirstOrDefault(x => x.Id == s.User);
-
-                CosmicBodyList.Items.Add(s);
-            }
+            Render();
         }
+        
+
 
         private void CosmicBodyList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             InfoPanel.Items.Clear();
 
-            var cosmicBody = (CosmicBody)CosmicBodyList.SelectedItem;
-            CosmicBodyName.Text = cosmicBody.Name;
-            InfoPanel.Items.Add(new InfoPanelItem(propName: "Название", propVal: cosmicBody.Name));
-            InfoPanel.Items.Add(new InfoPanelItem(propName: "Статус", propVal: cosmicBody.Status == 0 ? "Не подтверждено" : "Подтверждено"));
+            if (CosmicBodyListEl.SelectedItem == null)
+            {
+                return;
+            }
+
+            var cosmicBody = (CosmicBody)CosmicBodyListEl.SelectedItem;
+            CosmicBodyName.Text = cosmicBody?.Name;
+            InfoPanel.Items.Add(new InfoPanelItem(propName: "Название", propVal: cosmicBody?.Name));
+            InfoPanel.Items.Add(new InfoPanelItem(propName: "Статус", propVal: cosmicBody?.Status == 0 ? "Не подтверждено" : "Подтверждено"));
             InfoPanel.Items.Add(new InfoPanelItem
             (
                 propName: "Первооткрыватель",
@@ -73,10 +66,9 @@ namespace mainWin
             InfoPanel.Items.Add(new InfoPanelItem(propName: "Радиус", propVal: cosmicBody?.Radius));
 
 
-
             if (cosmicBody?.GetType() == typeof(Star))
             {
-                var star = (Star)CosmicBodyList.SelectedItem;
+                var star = (Star)cosmicBody;
 
                 InfoPanel.Items.Add(new InfoPanelItem
                 (
@@ -92,9 +84,10 @@ namespace mainWin
                     descPropVal: star?.DetectionMethodNavigation?.Description
                 ));
             }
-            else if (cosmicBody?.GetType() == typeof(Exoplanet))
+            
+            if (cosmicBody?.GetType() == typeof(Exoplanet))
             {
-                var exoplanet = (Exoplanet)CosmicBodyList.SelectedItem;
+                var exoplanet = (Exoplanet)cosmicBody;
                 InfoPanel.Items.Add(new InfoPanelItem(propName: "Радиус орбиты", propVal: exoplanet?.OrbitalRadius));
                 InfoPanel.Items.Add(new InfoPanelItem
                 (
@@ -110,6 +103,93 @@ namespace mainWin
                     descPropVal: exoplanet?.DetectionMethodNavigation?.Description
                 ));
             }
+        }
+
+        private void Render()
+        {
+            using var db = new SAEDBContext(Options);
+
+            string searchByDM = $"(SELECT Name FROM {AppConfig.SearchFilters.Type}_Detection_Method WHERE {AppConfig.SearchFilters.Type}.DetectionMethod = {AppConfig.SearchFilters.Type}_Detection_Method.Id)";
+            string searchByTy = $"(SELECT Name FROM {AppConfig.SearchFilters.Type}_Type WHERE {AppConfig.SearchFilters.Type}.Type = {AppConfig.SearchFilters.Type}_Type.Id)";
+            string searchBy = AppConfig.SearchFilters.SearchBy.ToString();
+            if (AppConfig.SearchFilters.SearchBy == CosmicBodyPropEnum.DetectionMethod)
+            {
+                searchBy = searchByDM;
+            } 
+            else if (AppConfig.SearchFilters.SearchBy == CosmicBodyPropEnum.Type)
+            {
+                searchBy = searchByTy;
+            }
+
+            string orderBy = AppConfig.SearchFilters.OrderBy.ToString();
+            if (AppConfig.SearchFilters.OrderBy == CosmicBodyPropEnum.DetectionMethod)
+            {
+                orderBy = searchByDM;
+            }
+            else if (AppConfig.SearchFilters.OrderBy == CosmicBodyPropEnum.Type)
+            {
+                orderBy = searchByTy;
+            }
+
+
+            string whereStr = $"WHERE {searchBy} LIKE '{searchBarEl.Text}%'";
+            if (searchBarEl.Text == "")
+            {
+                whereStr = "";
+            } 
+            else if (searchBarEl.Text == "-") {
+                whereStr = $"WHERE {searchBy} IS NULL";
+            }
+            string sql = $"SELECT * FROM {AppConfig.SearchFilters.Type} {whereStr} ORDER BY {orderBy}";
+
+            List<CosmicBody> cosmicBodyList = db.Stars.FromSqlRaw(sql).ToList<CosmicBody>();
+            if (AppConfig.SearchFilters.Type == CosmicBodyEnum.Exoplanet)
+            {
+                cosmicBodyList = db.Exoplanets.FromSqlRaw(sql).ToList<CosmicBody>();
+            }
+
+
+
+
+
+
+            
+            foreach (var cosmicBody in cosmicBodyList)
+            {
+                if (cosmicBody.GetType() == typeof(Star))
+                {
+                    ((Star)cosmicBody).DetectionMethodNavigation = db.StarDetectionMethods.FirstOrDefault(x => x.Id == cosmicBody.DetectionMethod);
+                    ((Star)cosmicBody).TypeNavigation = db.StarTypes.FirstOrDefault(x => x.Id == cosmicBody.Type);
+                }
+                else if (cosmicBody.GetType() == typeof(Exoplanet))
+                {
+                    ((Exoplanet)cosmicBody).DetectionMethodNavigation = db.ExoplanetDetectionMethods.FirstOrDefault(x => x.Id == cosmicBody.DetectionMethod);
+                    ((Exoplanet)cosmicBody).TypeNavigation = db.ExoplanetTypes.FirstOrDefault(x => x.Id == cosmicBody.Type);
+                }
+
+                cosmicBody.DiscovererNavigation = db.Discoverers.FirstOrDefault(x => x.Id == cosmicBody.Discoverer);
+                cosmicBody.UserNavigation = db.Users.FirstOrDefault(x => x.Id == cosmicBody.User);
+            }
+
+            CosmicBodyListEl.ItemsSource = cosmicBodyList;
+        }
+
+        private void searchBarEl_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Render();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (filtersEl.Visibility == Visibility.Collapsed)
+            {
+                filtersEl.Visibility = Visibility.Visible;
+            } 
+            else
+            {
+                filtersEl.Visibility = Visibility.Collapsed;
+            }
+            
         }
     }
 }

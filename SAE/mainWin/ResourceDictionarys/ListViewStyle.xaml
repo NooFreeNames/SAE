@@ -209,6 +209,11 @@
     <!-- Style for The ListViewItem -->
     <Style x:Key="{x:Type ListViewItem}"
        TargetType="ListViewItem">
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <SolidColorBrush Color="{StaticResource MainForeground}"></SolidColorBrush>
+            </Setter.Value>
+        </Setter>
         <Setter Property="SnapsToDevicePixels" Value="true"/>
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="Template">

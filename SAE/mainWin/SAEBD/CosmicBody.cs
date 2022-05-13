@@ -8,6 +8,8 @@ namespace mainWin
 {
     public class CosmicBody
     {
+        public string Ty => this.GetType().ToString();
+
         public int Id { get; set; }
         public string Name { get; set; } = null!;
         public sbyte Status { get; set; }

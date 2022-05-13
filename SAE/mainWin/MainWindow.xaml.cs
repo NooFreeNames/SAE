@@ -21,56 +21,46 @@ namespace mainWin
 {
     public partial class MainWindow : Window
     {
-        NameValueCollection Config => ConfigurationManager.AppSettings;
+        /* Pages */
+        public MainPage mainPage = new();
+        public AddingCosmicBodyPage addingCosmicBodyPage = new();
+        public SettingsPage settingsPage = new();
+        public ProfilePage profilePage = new();
 
         public MainWindow()
         {
             InitializeComponent();
-            
+            DataContext = this;
+
             /* Setting the window size */
-            double screenW = SystemParameters.PrimaryScreenWidth;
-            double screenH = SystemParameters.PrimaryScreenHeight;
-            if (!float.TryParse(Config.Get("WinSizeCoeff"), out float winSizeCoeff)) { winSizeCoeff = 0.5f; }
-            MainWin.Width = screenW * winSizeCoeff;
-            MainWin.Height = screenH * winSizeCoeff;
+            MainWin.Width = AppConfig.ScreenWidth * AppConfig.WinSizeCoeff;
+            MainWin.Height = AppConfig.ScreenHeight * AppConfig.WinSizeCoeff;
 
             /* Setting the window in the center of the screen */
-            MainWin.Left = (screenW - MainWin.Width) / 2;
-            MainWin.Top = (screenH - MainWin.Height) / 2;
+            MainWin.Left = (AppConfig.ScreenWidth - MainWin.Width) / 2;
+            MainWin.Top = (AppConfig.ScreenHeight - MainWin.Height) / 2;
 
-            MainFrame.Content = new MainPage();
+            MainFrame.Content = mainPage;
         }
 
         private void GoToMainPage(object sender, RoutedEventArgs e)
         {
-            if(MainFrame.Content.GetType() != typeof(MainPage))
-            {
-                MainFrame.Content = new MainPage();
-            }
+            MainFrame.Content = mainPage;
         }
 
         private void GoToAddingCosmicBodyPage(object sender, RoutedEventArgs e)
         {
-            if (MainFrame.Content.GetType() != typeof(AddingCosmicBodyPage))
-            {
-                MainFrame.Content = new AddingCosmicBodyPage();
-            }
+            MainFrame.Content = addingCosmicBodyPage;
         }
 
         private void GoToSettingsPage(object sender, RoutedEventArgs e)
         {
-            if (MainFrame.Content.GetType() != typeof(SettingsPage))
-            {
-                MainFrame.Content = new SettingsPage();
-            }
+            MainFrame.Content = settingsPage;
         }
 
         private void GoToProfilePage(object sender, RoutedEventArgs e)
         {
-            if (MainFrame.Content.GetType() != typeof(ProfilePage))
-            {
-                MainFrame.Content = new ProfilePage();
-            }
+            MainFrame.Content = profilePage;
         }
     }
 }

@@ -9,86 +9,113 @@
       Style="{StaticResource PageStyle}"
       Title="MainPage">
 
-    <Grid>
+    <Page.Resources>
+        <Thickness x:Key="GridItemMargin" Bottom="3" Left="3" Top="3" Right="3"/>
+    </Page.Resources>
+
+    <Grid Margin="{StaticResource GridItemMargin}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" MinWidth="300"></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
             <ColumnDefinition Width="1.2*" MinWidth="300"></ColumnDefinition>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="CosmicBodyName" Grid.Row="0" Grid.Column="0" Margin="{StaticResource GridItemMargin}" Style="{StaticResource CosmicBodyNameStyle}"></TextBlock>
 
         <!-- InformationPanel -->
-        <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
-
-            <Grid Margin="7, 7, 0, 7">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-
-                <TextBlock x:Name="CosmicBodyName" Style="{StaticResource CosmicBodyNameStyle}"></TextBlock>
-                <Button Grid.Column="1" Content="Изменить"></Button>
-                <Button Grid.Column="2" Content="Удалить"></Button>
-            </Grid>
-            
-            <ListView x:Name="InfoPanel" Grid.Row="1" Margin="7, 0, 0, 7">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Свойство" DisplayMemberBinding="{Binding Path=PropName}"></GridViewColumn>
-                        <GridViewColumn Header="Значение">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Path=PropVal, TargetNullValue=-}" Foreground="{Binding Path=NextFG}" ToolTip="{Binding Path=NextTT}"></TextBlock>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-
-        </Grid>
+        <ListView x:Name="InfoPanel" Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Margin="{StaticResource GridItemMargin}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Свойство" DisplayMemberBinding="{Binding Path=PropName}"></GridViewColumn>
+                    <GridViewColumn Header="Значение">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=PropVal, TargetNullValue=-}" Foreground="{Binding Path=NextFG}" ToolTip="{Binding Path=NextTT}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
         <!-- Splitter -->
-        <GridSplitter Grid.Column="1"/>
+        <GridSplitter Grid.Column="1" Grid.Row="0" Grid.RowSpan="4"/>
 
-        <!-- ListAndSearch -->
-        <Grid Grid.Column="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
+        <!-- Search -->
+        <Grid Grid.Row="0" Grid.Column="2" Margin="{StaticResource GridItemMargin}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition MinWidth="100"></ColumnDefinition>
-
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="30"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-
-            <Grid Margin="0, 7, 7, 7">
+            <TextBox Grid.Column="0" x:Name="searchBarEl" TextChanged="searchBarEl_TextChanged"></TextBox>
+            <Button Grid.Column="1"></Button>
+            <Button Grid.Column="2" Content="Фильтры" Click="Button_Click"></Button>
+        </Grid>
+        <Border Grid.Row="1" Grid.Column="2" x:Name="filtersEl" Background="White" CornerRadius="3" Visibility="Collapsed" Padding="7" Margin="{StaticResource GridItemMargin}">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition Width="30"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <TextBox Grid.Column="0"></TextBox>
-                <Button Grid.Column="1"></Button>
-                <Button Grid.Column="2" Content="Фильтры"></Button>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0">Тип объекта</TextBlock>
+                <RadioButton Grid.Column="0" Grid.Row="1">Звезда</RadioButton>
+                <RadioButton Grid.Column="0" Grid.Row="2">Экзопланета</RadioButton>
+                <RadioButton Grid.Column="0" Grid.Row="3">Галактика</RadioButton>
+
+                <TextBlock Grid.Column="1" Grid.Row="0">Искать по</TextBlock>
+                <RadioButton Grid.Column="1" Grid.Row="1">Имя</RadioButton>
+                <RadioButton Grid.Column="1" Grid.Row="2">Тип</RadioButton>
+                <RadioButton Grid.Column="1" Grid.Row="3">Дата добавления</RadioButton>
+
+                <TextBlock Grid.Column="2" Grid.Row="0">Сортировать по</TextBlock>
+                <RadioButton Grid.Column="2" Grid.Row="1">Имя</RadioButton>
+                <RadioButton Grid.Column="2" Grid.Row="2">Тип</RadioButton>
+                <RadioButton Grid.Column="2" Grid.Row="3">Дата добавления</RadioButton>
             </Grid>
+        </Border>
 
 
-            <ListView x:Name="CosmicBodyList" Grid.Row="1" Grid.ColumnSpan="3" Margin="0, 0, 7, 7" SelectionChanged="CosmicBodyList_SelectionChanged">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Статус" DisplayMemberBinding="{Binding Path=Status}"></GridViewColumn>
-                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}"></GridViewColumn>
-                        <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Path=TypeNavigation.Name, TargetNullValue=-}"></GridViewColumn>
-                        <GridViewColumn Header="DateAdded" DisplayMemberBinding="{Binding Path=DateAdded}"></GridViewColumn>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+        <!-- CosmicBodyList -->
+        <ListView x:Name="CosmicBodyListEl" Grid.Row="2" Grid.Column="2" Margin="{StaticResource GridItemMargin}" SelectionChanged="CosmicBodyList_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="Auto" Header="Id" DisplayMemberBinding="{Binding Path=Id}"></GridViewColumn>
+                    <GridViewColumn Width="Auto" Header="Статус" DisplayMemberBinding="{Binding Path=Status}"></GridViewColumn>
+                    <GridViewColumn Width="Auto" Header="Название" DisplayMemberBinding="{Binding Path=Name}"></GridViewColumn>
+                    <GridViewColumn Width="Auto" Header="Тип" DisplayMemberBinding="{Binding Path=TypeNavigation.Name, TargetNullValue=-}"></GridViewColumn>
+                    <GridViewColumn Width="Auto" Header="Метогд открытия" DisplayMemberBinding="{Binding Path=DetectionMethodNavigation.Name}"></GridViewColumn>
+                    <GridViewColumn Width="Auto" Header="Дата добовления" DisplayMemberBinding="{Binding Path=DateAdded}"></GridViewColumn>
+                    <GridViewColumn Width="Auto" Header="Дата подтверждения" DisplayMemberBinding="{Binding Path=DateConfirmation, TargetNullValue=-}"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Grid Grid.Row="3" Grid.Column="2" Margin="{StaticResource GridItemMargin}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0">←</Button>
+            <Button Grid.Column="1">→</Button>
+
         </Grid>
     </Grid>
 </Page>
