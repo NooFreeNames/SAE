@@ -1,0 +1,36 @@
+﻿<Window x:Class="SAE_Program.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SAE_Program"
+        mc:Ignorable="d"
+        x:Name="MainWin"
+        Style="{StaticResource WindowStyle}"
+        Title="SAE" Width="800" Height="600"
+        Closing="MainWindow_Closing">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Grid Grid.Column="0" ShowGridLines="True" Style="{StaticResource SidebarStyle}">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <StackPanel Grid.Row="0">
+                <Button x:Name="MainPageBtn" Content="M" Click="GoToPage" BorderThickness="0" Background="#c4cad4"></Button>
+                <Button x:Name="AddingCosmicBodyPageBtn" Content="A" Click="GoToPage" BorderThickness="0" Background="#a3a9b4"></Button>
+                <Button x:Name="SettingsPageBtn" Content="S" Click="GoToPage" BorderThickness="0" Background="#a3a9b4"></Button>
+            </StackPanel>
+
+            <Button Grid.Row="1" x:Name="ProfilePageBtn" Content="P" Click="GoToPage"></Button>
+        </Grid>
+        <Frame x:Name="MainFrame" Grid.Column="1" NavigationUIVisibility="Hidden"></Frame>
+    </Grid>
+</Window>

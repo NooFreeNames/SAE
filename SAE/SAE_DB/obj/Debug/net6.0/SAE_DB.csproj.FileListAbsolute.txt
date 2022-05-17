@@ -1,0 +1,14 @@
+C:\Users\Study\Desktop\project_SAE\SAE\SAE_DB\bin\Debug\net6.0\SAE_DB.deps.json
+C:\Users\Study\Desktop\project_SAE\SAE\SAE_DB\bin\Debug\net6.0\SAE_DB.dll
+C:\Users\Study\Desktop\project_SAE\SAE\SAE_DB\bin\Debug\net6.0\SAE_DB.pdb
+C:\Users\Study\Desktop\project_SAE\SAE\SAE_DB\obj\Debug\net6.0\SAE_DB.csproj.AssemblyReference.cache
+C:\Users\Study\Desktop\project_SAE\SAE\SAE_DB\obj\Debug\net6.0\SAE_DB.Properties.Resources.resources
+C:\Users\Study\Desktop\project_SAE\SAE\SAE_DB\obj\Debug\net6.0\SAE_DB.csproj.GenerateResource.cache
+C:\Users\Study\Desktop\project_SAE\SAE\SAE_DB\obj\Debug\net6.0\SAE_DB.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Study\Desktop\project_SAE\SAE\SAE_DB\obj\Debug\net6.0\SAE_DB.AssemblyInfoInputs.cache
+C:\Users\Study\Desktop\project_SAE\SAE\SAE_DB\obj\Debug\net6.0\SAE_DB.AssemblyInfo.cs
+C:\Users\Study\Desktop\project_SAE\SAE\SAE_DB\obj\Debug\net6.0\SAE_DB.csproj.CoreCompileInputs.cache
+C:\Users\Study\Desktop\project_SAE\SAE\SAE_DB\obj\Debug\net6.0\SAE_DB.dll
+C:\Users\Study\Desktop\project_SAE\SAE\SAE_DB\obj\Debug\net6.0\refint\SAE_DB.dll
+C:\Users\Study\Desktop\project_SAE\SAE\SAE_DB\obj\Debug\net6.0\SAE_DB.pdb
+C:\Users\Study\Desktop\project_SAE\SAE\SAE_DB\obj\Debug\net6.0\ref\SAE_DB.dll

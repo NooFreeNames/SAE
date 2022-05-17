@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mainWin", "mainWin\mainWin.csproj", "{12CA781E-10CE-4284-B26B-409336E9ED5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SAE_Program", "SAE_Program\SAE_Program.csproj", "{12CA781E-10CE-4284-B26B-409336E9ED5A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SAE_DB", "SAE_DB\SAE_DB.csproj", "{23CEEFAE-FD57-4B00-90CD-D996AF224AB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{12CA781E-10CE-4284-B26B-409336E9ED5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12CA781E-10CE-4284-B26B-409336E9ED5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12CA781E-10CE-4284-B26B-409336E9ED5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23CEEFAE-FD57-4B00-90CD-D996AF224AB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23CEEFAE-FD57-4B00-90CD-D996AF224AB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23CEEFAE-FD57-4B00-90CD-D996AF224AB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23CEEFAE-FD57-4B00-90CD-D996AF224AB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
