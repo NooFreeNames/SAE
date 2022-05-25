@@ -10,6 +10,55 @@
       Title="ProfilePage">
 
     <Grid>
-        <TextBlock Text="ProfilePage" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Border Style="{StaticResource ContainerBorderStyle}">
+            <TextBlock FontSize="25" Padding="5">Вход в аккунт не выполнен</TextBlock>
+        </Border>
+        <Border Grid.Row="1" Style="{StaticResource ContainerBorderStyle}">
+            <TextBlock FontSize="25" Padding="5" HorizontalAlignment="Center">Уведомления и Новости</TextBlock>
+        </Border>
+        
+        <Border Grid.Column="2" Grid.RowSpan="2" Style="{StaticResource ContainerBorderStyle}">
+            <Grid Width="300">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Label x:Name="UserNameLabelEl" Target="{Binding ElementName=UserNameBarEl}">_Имя пользователя</Label>
+                <TextBox x:Name="UserNameBarEl" Grid.Row="1"></TextBox>
+
+                <Label x:Name="EmailLabelEl" Target="{Binding ElementName=EmailBarEl}" Grid.Row="2">_Электронная почта</Label>
+                <TextBox x:Name="EmailBarEl" Grid.Row="3"></TextBox>
+
+                <Label x:Name="PasswordLabelEl" Target="{Binding ElementName=PasswordBarEl}" Grid.Row="4">_Пароль</Label>
+                <PasswordBox x:Name="PasswordBarEl" Grid.Row="5"></PasswordBox>
+
+                <Label x:Name="ConfirmPasswordLabelEl" Target="{Binding ElementName=ConfirmPasswordBarEl}" Grid.Row="6">П_одтверждение пароля</Label>
+                <PasswordBox x:Name="ConfirmPasswordBarEl" Grid.Row="7"></PasswordBox>
+
+                <TextBlock Grid.Row="8" VerticalAlignment="Bottom" Margin="0, 20,0,0">Нажмите сюда чтобы <Button x:Name="HyperLink" Click="Hyperlink_Click">войти</Button></TextBlock>
+                <Button Grid.Row="9" VerticalAlignment="Bottom" Click="Button_Click">Подтвердить</Button>
+            </Grid>
+        </Border>
     </Grid>
 </Page>

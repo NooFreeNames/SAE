@@ -7,12 +7,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Style="{StaticResource PageStyle}"
-      Title="MainPage">
-
-    <Page.Resources>
-        <Thickness x:Key="GridItemMargin" Bottom="3" Left="3" Top="3" Right="3"/>
-    </Page.Resources>
-    <Grid Margin="{StaticResource GridItemMargin}">
+      x:Name="MainPageEl">
+    
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" MinWidth="300"></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -25,40 +22,46 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <TextBlock x:Name="CosmicBodyName" Grid.Row="0" Grid.Column="0" Margin="{StaticResource GridItemMargin}" Style="{StaticResource CosmicBodyNameStyle}"></TextBlock>
+        <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource ContainerBorderStyle}">
+            <TextBlock x:Name="CosmicBodyName" Padding="5,0,0,0"></TextBlock>
+        </Border>
 
         <!-- InformationPanel -->
-        <ListView x:Name="InfoPanel" Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Margin="{StaticResource GridItemMargin}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Свойство" DisplayMemberBinding="{Binding Path=PropName}"></GridViewColumn>
-                    <GridViewColumn Header="Значение">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Path=PropVal, TargetNullValue=-}" Foreground="{Binding Path=NextFG}" ToolTip="{Binding Path=NextTT}"></TextBlock>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
-
+        <Border Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Style="{StaticResource ContainerBorderStyle}">
+            <ListView x:Name="InfoPanel" Grid.Row="1" Grid.RowSpan="3" Grid.Column="0">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Свойство" DisplayMemberBinding="{Binding Path=PropName}"></GridViewColumn>
+                        <GridViewColumn Header="Значение">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=PropVal, TargetNullValue=-}" ToolTip="{Binding Path=NextTT}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Border>
+            
         <!-- Splitter -->
         <GridSplitter Grid.Column="1" Grid.Row="0" Grid.RowSpan="4"/>
 
         <!-- Search -->
-        <Grid Grid.Row="0" Grid.Column="2" Margin="{StaticResource GridItemMargin}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="30"></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+        <Border Grid.Row="0" Grid.Column="2" Style="{StaticResource ContainerBorderStyle}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-            <TextBox Grid.Column="0" x:Name="searchBarEl" TextChanged="searchBarEl_TextChanged"></TextBox>
-            <Button Grid.Column="1"></Button>
-            <Button Grid.Column="2" Content="Фильтры" Click="Button_Click"></Button>
-        </Grid>
-        <Border Grid.Row="1" Grid.Column="2" x:Name="filtersEl" Background="White" CornerRadius="3" Visibility="Collapsed" Padding="7" Margin="{StaticResource GridItemMargin}">
+                <TextBox Grid.Column="0" x:Name="searchBarEl" TextChanged="searchBarEl_TextChanged"></TextBox>
+                <Button Grid.Column="1" Content="_Фильтры" Click="Button_Click"></Button>
+            </Grid>
+        </Border>
+        
+        <!-- Filters -->
+        <Border x:Name="filtersEl" Grid.Row="1" Grid.Column="2" Visibility="Collapsed" Style="{StaticResource ContainerBorderStyle}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
@@ -90,31 +93,38 @@
             </Grid>
         </Border>
 
-
         <!-- CosmicBodyList -->
-        <ListView x:Name="CosmicBodyListEl" Grid.Row="2" Grid.Column="2" Margin="{StaticResource GridItemMargin}" SelectionChanged="CosmicBodyList_SelectionChanged">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Width="Auto" Header="Id" DisplayMemberBinding="{Binding Path=Id, FallbackValue=-}"></GridViewColumn>
-                    <GridViewColumn Width="Auto" Header="Статус" DisplayMemberBinding="{Binding Path=Status, FallbackValue=-}"></GridViewColumn>
-                    <GridViewColumn Width="Auto" Header="Название" DisplayMemberBinding="{Binding Path=Name, FallbackValue=-}"></GridViewColumn>
-                    <GridViewColumn Width="Auto" Header="Тип" DisplayMemberBinding="{Binding Path=TypeNavigation.Name, TargetNullValue=-, FallbackValue=-}"></GridViewColumn>
-                    <GridViewColumn Width="Auto" Header="Метогд открытия" DisplayMemberBinding="{Binding Path=DetectionMethodNavigation.Name, FallbackValue=-}"></GridViewColumn>
-                    <GridViewColumn Width="Auto" Header="Дата добовления" DisplayMemberBinding="{Binding Path=DateAdded, FallbackValue=-}"></GridViewColumn>
-                    <GridViewColumn Width="Auto" Header="Дата подтверждения" DisplayMemberBinding="{Binding Path=DateConfirmation, TargetNullValue=-, FallbackValue=-}"></GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <Border Grid.Row="2" Grid.Column="2" Style="{StaticResource ContainerBorderStyle}">
+            <ListView x:Name="CelestialObjectListEl" Grid.Row="2" Grid.Column="2" SelectionChanged="CosmicBodyList_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="Auto" Header="Id" DisplayMemberBinding="{Binding Path=Id, FallbackValue=-}"></GridViewColumn>
+                        <GridViewColumn Width="Auto" Header="Статус" DisplayMemberBinding="{Binding Path=Status, FallbackValue=-, Converter={StaticResource StatusConverter}}"></GridViewColumn>
+                        <GridViewColumn Width="Auto" Header="Название" DisplayMemberBinding="{Binding Path=Name, FallbackValue=-}"></GridViewColumn>
+                        <GridViewColumn Width="Auto" Header="Тип" DisplayMemberBinding="{Binding Path=TypeNavigation.Name, TargetNullValue=-, FallbackValue=-}"></GridViewColumn>
+                        <GridViewColumn Width="Auto" Header="Метогд открытия" DisplayMemberBinding="{Binding Path=DetectionMethodNavigation.Name, FallbackValue=-}"></GridViewColumn>
+                        <GridViewColumn Width="Auto" Header="Дата добовления" DisplayMemberBinding="{Binding Path=DateAdded, FallbackValue=-}"></GridViewColumn>
+                        <GridViewColumn Width="Auto" Header="Дата подтверждения" DisplayMemberBinding="{Binding Path=DateConfirmation, TargetNullValue=-, FallbackValue=-}"></GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Border>
 
-        <Grid Grid.Row="3" Grid.Column="2" Margin="{StaticResource GridItemMargin}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+        <!-- PagesButtons -->
+        <Border Grid.Row="3" Grid.Column="2" Style="{StaticResource ContainerBorderStyle}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0">←</Button>
-            <Button Grid.Column="1">→</Button>
-
-        </Grid>
+                <Button Grid.Column="0" Click="Button_Click_2" x:Name="LeftBtn" IsEnabled="False">←</Button>
+                <TextBox Grid.Column="1" Margin="5,0,5,0"  MinWidth="50" Text="{Binding Path=CelestialObjectListElPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <TextBlock Grid.Column="2" Margin="0,0,5,0">/ <TextBlock Text="{Binding ElementName=MainPageEl, Path=CelestialObjectListElItemsNum}"></TextBlock></TextBlock>
+                <Button Grid.Column="3" Click="Button_Click_1" x:Name="RightBtn">→</Button>
+            </Grid>
+        </Border>
     </Grid>
 </Page>

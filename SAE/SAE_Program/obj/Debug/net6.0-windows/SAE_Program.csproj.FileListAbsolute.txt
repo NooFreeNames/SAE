@@ -78,7 +78,6 @@ C:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\bin\Debug\net6.0-windows\SAE_
 C:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\obj\Debug\net6.0-windows\SAE_Program.csproj.AssemblyReference.cache
 C:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\obj\Debug\net6.0-windows\ResourceDictionarys\ButtonStyle.baml
 C:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\obj\Debug\net6.0-windows\ResourceDictionarys\Colors.baml
-C:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\obj\Debug\net6.0-windows\ResourceDictionarys\CosmicBodyNameStyle.baml
 C:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\obj\Debug\net6.0-windows\ResourceDictionarys\GridSplitterStyle.baml
 C:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\obj\Debug\net6.0-windows\ResourceDictionarys\ListViewStyle.baml
 C:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\obj\Debug\net6.0-windows\ResourceDictionarys\PageStyle.baml
@@ -109,3 +108,9 @@ C:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\obj\Debug\net6.0-windows\refi
 C:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\obj\Debug\net6.0-windows\SAE_Program.pdb
 C:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\obj\Debug\net6.0-windows\SAE_Program.genruntimeconfig.cache
 C:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\obj\Debug\net6.0-windows\ref\SAE_Program.dll
+C:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\obj\Debug\net6.0-windows\ResourceDictionarys\Converters.baml
+C:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\obj\Debug\net6.0-windows\ResourceDictionarys\BorderStyle.baml
+C:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\obj\Debug\net6.0-windows\ResourceDictionarys\TextBlockStyle.baml
+C:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\obj\Debug\net6.0-windows\ResourceDictionarys\LabelStyle.baml
+C:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\obj\Debug\net6.0-windows\ResourceDictionarys\TextBoxStyle.baml

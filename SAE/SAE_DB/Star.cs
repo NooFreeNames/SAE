@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SAE_DB
 {
-    public partial class Star : CosmicBody
+    public partial class Star : CelestialObject
     {
         public Star()
         {

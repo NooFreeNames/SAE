@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SAE_DB
 {
-    public partial class Exoplanet : CosmicBody
+    public partial class Exoplanet : CelestialObject
     {
         public Exoplanet()
         {

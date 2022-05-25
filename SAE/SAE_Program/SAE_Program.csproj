@@ -31,4 +31,15 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="ResourceDictionarys\BorderStyleContainerBorderStyle.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ResourceDictionarys\Converters.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
 </Project>

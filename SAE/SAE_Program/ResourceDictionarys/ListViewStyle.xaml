@@ -70,12 +70,11 @@
 
     <!-- Style for The ColumnHeaderGripper -->
     <Style x:Key="GridViewColumnHeaderGripper" TargetType="Thumb">
-        <Setter Property="Width" Value="18" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Border Padding="0">
-                        <Rectangle HorizontalAlignment="Center" Width="2">
+                        <Rectangle Width="2">
                             <Rectangle.Fill>
                                 <SolidColorBrush Color="{StaticResource ComplementaryColor}"/>
                             </Rectangle.Fill>
@@ -103,27 +102,21 @@
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
-                                <VisualState x:Name="MouseOver">
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="SolidColorBrush" 
-                                                        Storyboard.TargetProperty="Color" 
-                                                        To="LightGray"></ColorAnimation>
-                                    </Storyboard>
-                                </VisualState>
+                                <VisualState x:Name="MouseOver"></VisualState>
                                 <VisualState x:Name="Pressed" />
                                 <VisualState x:Name="Disabled" />
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Border x:Name="HeaderBorder" BorderThickness="0" Padding="8,0,2,0">
+                        <Border x:Name="HeaderBorder" BorderThickness="0">
                             <Border.Background>
                                 <SolidColorBrush x:Name="SolidColorBrush" Color="{StaticResource MainColor}"/>
                             </Border.Background>
-                            <ContentPresenter x:Name="HeaderContent"  Margin="0,0,0,1"  RecognizesAccessKey="True" 
+                            <ContentPresenter x:Name="HeaderContent"  Margin="5,0,5,0"  RecognizesAccessKey="True" 
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
                                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </Border>
-                        <Thumb x:Name="PART_HeaderGripper" HorizontalAlignment="Right" Margin="0,0,-9,0" 
+                        <Thumb x:Name="PART_HeaderGripper" HorizontalAlignment="Right" Margin="0,0,0,0" 
                                Style="{StaticResource GridViewColumnHeaderGripper}" />
                     </Grid>
                 </ControlTemplate>
@@ -161,6 +154,12 @@
     <!-- Style for The ListView -->
     <Style x:Key="{x:Type ListView}"
        TargetType="ListView">
+        <Setter Property="VirtualizingStackPanel.ScrollUnit" Value="Pixel"></Setter>
+        <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False"></Setter>
+        <Setter Property="VirtualizingStackPanel.CacheLengthUnit" Value="Item"></Setter>
+        <Setter Property="VirtualizingStackPanel.CacheLength" Value="5"></Setter>
+        <Setter Property="VirtualizingStackPanel.VirtualizationMode" Value="Recycling"></Setter>
+        <Setter Property="VirtualizingStackPanel.IsVirtualizing" Value="True"></Setter>
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
@@ -170,20 +169,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListView">
-                    <Border Name="Border" BorderThickness="1" Padding="5" CornerRadius="3">
-                        <Border.BorderBrush>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                <LinearGradientBrush.GradientStops>
-                                    <GradientStopCollection>
-                                        <GradientStop Color="{DynamicResource BorderLightColor}" Offset="0.0" />
-                                        <GradientStop Color="{DynamicResource BorderMediumColor}" Offset="1.0" />
-                                    </GradientStopCollection>
-                                </LinearGradientBrush.GradientStops>
-                            </LinearGradientBrush>
-                        </Border.BorderBrush>
-                        <Border.Background>
-                            <SolidColorBrush Color="{StaticResource MainColor}"/>
-                        </Border.Background>
+                    <Border Name="Border" Style="{StaticResource ListViweBorderStyle}">
                         <ScrollViewer Style="{DynamicResource {x:Static GridView.GridViewScrollViewerStyleKey}}">
                             <ItemsPresenter/>
                         </ScrollViewer>
@@ -196,7 +182,7 @@
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter TargetName="Border" Property="Background">
                                 <Setter.Value>
-                                    <SolidColorBrush Color="{DynamicResource DisabledBorderLightColor}"/>
+                                    <SolidColorBrush Color="LightGray"/>
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
@@ -209,57 +195,68 @@
     <!-- Style for The ListViewItem -->
     <Style x:Key="{x:Type ListViewItem}"
        TargetType="ListViewItem">
-        <Setter Property="Foreground">
-            <Setter.Value>
-                <SolidColorBrush Color="{StaticResource MainForeground}"></SolidColorBrush>
-            </Setter.Value>
-        </Setter>
         <Setter Property="SnapsToDevicePixels" Value="true"/>
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">
                     <Border x:Name="Border" Padding="2" SnapsToDevicePixels="true" Background="Transparent">
+                        <GridViewRowPresenter x:Name="GridViewRowPresenter" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <TextBlock.Foreground>
+                                <SolidColorBrush Color="{StaticResource MainForeground}"></SolidColorBrush>
+                            </TextBlock.Foreground>
+                        </GridViewRowPresenter>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="Normal">
+                                </VisualState>
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
-                                                Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource ComplementaryColor}" />
-                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimation Storyboard.TargetName="Border" 
+                                                        Storyboard.TargetProperty="Background.Color"
+                                                        To="{StaticResource ComplementaryColor}"
+                                                        Duration="0:0:0.0">
+                                        </ColorAnimation>
+                                        <ColorAnimation Storyboard.TargetName="GridViewRowPresenter" 
+                                                        Storyboard.TargetProperty="(TextBlock.Foreground).Color"
+                                                        To="{StaticResource ComplementaryForeground}"
+                                                        Duration="0:0:0.0">
+                                        </ColorAnimation>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Disabled"/>
-                            </VisualStateGroup>
-                            <VisualStateGroup x:Name="SelectionStates">
-                                <VisualState x:Name="Unselected"/>
                                 <VisualState x:Name="Selected">
                                     <Storyboard>
                                         <ColorAnimation Storyboard.TargetName="Border" 
                                                         Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)"
-                                                        To="{StaticResource MouseOverColor}"
-                                                        Duration="0:0:0">
+                                                        To="{StaticResource ComplementaryColor}"
+                                                        Duration="0:0:0.0">
                                         </ColorAnimation>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
-                                                Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource MouseOverColor}" />
-                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimation Storyboard.TargetName="GridViewRowPresenter" 
+                                                        Storyboard.TargetProperty="(TextBlock.Foreground).Color"
+                                                        To="{StaticResource ComplementaryForeground}"
+                                                        Duration="0:0:0.0">
+                                        </ColorAnimation>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="SelectedUnfocused">
                                     <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
-                                                Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource MouseOverColor}"/>
-                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimation Storyboard.TargetName="Border" 
+                                                        Storyboard.TargetProperty="Background.Color"
+                                                        To="{StaticResource ComplementaryColor}"
+                                                        Duration="0:0:0.1">
+                                        </ColorAnimation>
+                                        <ColorAnimation Storyboard.TargetName="GridViewRowPresenter" 
+                                                        Storyboard.TargetProperty="(TextBlock.Foreground).Color"
+                                                        To="{StaticResource ComplementaryForeground}"
+                                                        Duration="0:0:0.2">
+                                        </ColorAnimation>
                                     </Storyboard>
                                 </VisualState>
-                                
+
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <GridViewRowPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

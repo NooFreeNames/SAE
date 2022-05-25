@@ -27,10 +27,10 @@
     <Page Update="ResourceDictionarys\Colors.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="ResourceDictionarys\CosmicBodyNameStyle.xaml">
+    <Page Update="ResourceDictionarys\GridSplitterStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="ResourceDictionarys\GridSplitterStyle.xaml">
+    <Page Update="ResourceDictionarys\LabelStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ResourceDictionarys\ListViewStyle.xaml">
@@ -55,6 +55,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ResourceDictionarys\SidebarStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ResourceDictionarys\BorderStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ResourceDictionarys\Converters.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ResourceDictionarys\TextBlockStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ResourceDictionarys\TextBoxStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ResourceDictionarys\WindowStyle.xaml">

@@ -18,7 +18,8 @@ using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
 using SAE_DB;
 using SAE_Program.Pages;
-
+using  System.Linq.Expressions;
+using System.ComponentModel;
 namespace SAE_Program
 {
     /// <summary>
@@ -26,15 +27,67 @@ namespace SAE_Program
     /// </summary>
     public partial class MainPage : Page
     {
+        public static readonly DependencyProperty CelestialObjectListElPageProperty;
 
+        uint defoutVAl = 1u;
+        public uint CelestialObjectListElPage
+        {
+            get { return (uint)GetValue(CelestialObjectListElPageProperty); }
+            set
+            {
+                SetValue(CelestialObjectListElPageProperty, value);
+                LeftBtn.IsEnabled = true;
+                RightBtn.IsEnabled = true;
+                if (value <= defoutVAl)
+                {
+                    SetValue(CelestialObjectListElPageProperty, defoutVAl);
+                    LeftBtn.IsEnabled = false;
+                }
+                if (value >= CelestialObjectListElItemsNum)
+                {
+                    SetValue(CelestialObjectListElPageProperty, CelestialObjectListElItemsNum);
+                    RightBtn.IsEnabled = false;
+                }
+
+                Render();
+            }
+        }
+
+        public static readonly DependencyProperty CelestialObjectListElItemsNumProperty;
+        public uint CelestialObjectListElItemsNum
+        {
+            get { return (uint)GetValue(CelestialObjectListElItemsNumProperty); }
+            set 
+            { 
+                if (value <= defoutVAl)
+                {
+                    SetValue(CelestialObjectListElItemsNumProperty, defoutVAl);
+                } else
+                {
+                    SetValue(CelestialObjectListElItemsNumProperty, value);
+                    
+                }
+            }
+        }
+
+        static MainPage()
+        {
+            CelestialObjectListElItemsNumProperty = DependencyProperty.Register(
+            "CelestialObjectListElItemsNum",
+            typeof(uint),
+            typeof(MainPage));
+
+            CelestialObjectListElPageProperty = DependencyProperty.Register(
+            "CelestialObjectListElPage",
+            typeof(uint),
+            typeof(MainPage));
+        }
+        
         public MainPage()
         {
             InitializeComponent();
             DataContext = this;
-
-            /* Configuring the database connection */
-
-
+            SetValue(CelestialObjectListElPageProperty, 1u);
             Render();
         }
         
@@ -44,28 +97,27 @@ namespace SAE_Program
         {
             InfoPanel.Items.Clear();
 
-            if (CosmicBodyListEl.SelectedItem == null)
+            var cosmicBody = CelestialObjectListEl.SelectedItem as CelestialObject;
+            if (cosmicBody == null)
             {
                 return;
             }
-
-            var cosmicBody = (CosmicBody)CosmicBodyListEl.SelectedItem;
-            CosmicBodyName.Text = cosmicBody?.Name;
-            InfoPanel.Items.Add(new InfoPanelItem(propName: "Название", propVal: cosmicBody?.Name));
-            InfoPanel.Items.Add(new InfoPanelItem(propName: "Статус", propVal: cosmicBody?.Status == 0 ? "Не подтверждено" : "Подтверждено"));
+            CosmicBodyName.Text = cosmicBody.Name;
+            InfoPanel.Items.Add(new InfoPanelItem(propName: "Название", propVal: cosmicBody.Name));
+            InfoPanel.Items.Add(new InfoPanelItem(propName: "Статус", propVal:  new StatusConverter().Convert(cosmicBody.Status)));
             InfoPanel.Items.Add(new InfoPanelItem
             (
                 propName: "Первооткрыватель",
-                propVal: cosmicBody?.DiscovererNavigation?.Name,
-                descPropVal: cosmicBody?.DiscovererNavigation?.Description
+                propVal: cosmicBody.DiscovererNavigation?.Name,
+                descPropVal: cosmicBody.DiscovererNavigation?.Description
             ));
-            InfoPanel.Items.Add(new InfoPanelItem(propName: "Дата добавления", propVal: cosmicBody?.DateAdded));
-            InfoPanel.Items.Add(new InfoPanelItem(propName: "Дата подтверждения", propVal: cosmicBody?.DateConfirmation));
-            InfoPanel.Items.Add(new InfoPanelItem(propName: "Масса", propVal: cosmicBody?.Mass));
-            InfoPanel.Items.Add(new InfoPanelItem(propName: "Радиус", propVal: cosmicBody?.Radius));
+            InfoPanel.Items.Add(new InfoPanelItem(propName: "Дата добавления", propVal: cosmicBody.DateAdded));
+            InfoPanel.Items.Add(new InfoPanelItem(propName: "Дата подтверждения", propVal: cosmicBody.DateConfirmation));
+            InfoPanel.Items.Add(new InfoPanelItem(propName: "Масса", propVal: cosmicBody.Mass));
+            InfoPanel.Items.Add(new InfoPanelItem(propName: "Радиус", propVal: cosmicBody.Radius));
 
 
-            if (cosmicBody?.GetType() == typeof(Star))
+            if (cosmicBody.GetType() == typeof(Star))
             {
                 var star = (Star)cosmicBody;
 
@@ -84,7 +136,7 @@ namespace SAE_Program
                 ));
             }
             
-            if (cosmicBody?.GetType() == typeof(Exoplanet))
+            if (cosmicBody.GetType() == typeof(Exoplanet))
             {
                 var exoplanet = (Exoplanet)cosmicBody;
                 InfoPanel.Items.Add(new InfoPanelItem(propName: "Радиус орбиты", propVal: exoplanet?.OrbitalRadius));
@@ -104,68 +156,42 @@ namespace SAE_Program
             }
         }
 
+
         private void Render()
         {
             using var db = new SAEDBContext();
 
-            string searchByDM = $"(SELECT Name FROM {AppConfig.SearchFilters.Type}_Detection_Method WHERE {AppConfig.SearchFilters.Type}.DetectionMethod = {AppConfig.SearchFilters.Type}_Detection_Method.Id)";
-            string searchByTy = $"(SELECT Name FROM {AppConfig.SearchFilters.Type}_Type WHERE {AppConfig.SearchFilters.Type}.Type = {AppConfig.SearchFilters.Type}_Type.Id)";
-            string searchBy = AppConfig.SearchFilters.SearchBy.ToString();
-            if (AppConfig.SearchFilters.SearchBy == CosmicBodyPropEnum.DetectionMethod)
+            var sqlQuery = new SQLQuery(searchBarEl.Text, CelestialObjectListElPage);
+            IQueryable<CelestialObject> celestialObjecties;
+            int count;
+            if (SQLQuery.Type == CelestialObjectEnum.Exoplanet)
             {
-                searchBy = searchByDM;
-            }
-            else if (AppConfig.SearchFilters.SearchBy == CosmicBodyPropEnum.Type)
-            {
-                searchBy = searchByTy;
-            }
-
-            string orderBy = AppConfig.SearchFilters.OrderBy.ToString();
-            if (AppConfig.SearchFilters.OrderBy == CosmicBodyPropEnum.DetectionMethod)
-            {
-                orderBy = searchByDM;
-            }
-            else if (AppConfig.SearchFilters.OrderBy == CosmicBodyPropEnum.Type)
-            {
-                orderBy = searchByTy;
-            }
-
-
-            string whereStr = $"WHERE {searchBy} LIKE '{searchBarEl.Text}%'";
-            if (searchBarEl.Text == "")
-            {
-                whereStr = "";
-            }
-            else if (searchBarEl.Text == "-")
-            {
-                whereStr = $"WHERE {searchBy} IS NULL";
-            }
-            string sql = $"SELECT * FROM {AppConfig.SearchFilters.Type} {whereStr} ORDER BY {orderBy}";
-
-            IQueryable<CosmicBody> cosmicBodies;
-            if (AppConfig.SearchFilters.Type == CosmicBodyEnum.Exoplanet)
-            {
-                cosmicBodies = db.Exoplanets.FromSqlRaw(sql)
+                count = db.Exoplanets.FromSqlRaw(sqlQuery.WhereSQLString).Count();
+                celestialObjecties = db.Exoplanets.FromSqlRaw(sqlQuery.SQLString)
                     .Include(s => s.DetectionMethodNavigation)
                     .Include(s => s.TypeNavigation);
             }
             else
             {
-                cosmicBodies = db.Stars.FromSqlRaw(sql)
+                count = db.Exoplanets.FromSqlRaw(sqlQuery.WhereSQLString).Count();
+                celestialObjecties = db.Stars.FromSqlRaw(sqlQuery.SQLString)
                     .Include(s => s.DetectionMethodNavigation)
                     .Include(s => s.TypeNavigation);
             }
 
 
-            cosmicBodies = cosmicBodies
+            celestialObjecties = celestialObjecties
                 .Include(c => c.DiscovererNavigation)
                 .Include(c => c.UserNavigation);
 
-            CosmicBodyListEl.ItemsSource = cosmicBodies.ToList();
+            CelestialObjectListElItemsNum = (uint)Math.Ceiling((double)count / SQLQuery.ItemNum);
+            CelestialObjectListEl.ItemsSource = celestialObjecties.ToArray();
         }
+
 
         private void searchBarEl_TextChanged(object sender, TextChangedEventArgs e)
         {
+            CelestialObjectListElPage = defoutVAl;
             Render();
         }
 
@@ -180,6 +206,21 @@ namespace SAE_Program
                 filtersEl.Visibility = Visibility.Collapsed;
             }
             
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            CelestialObjectListElPage++;
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            CelestialObjectListElPage--;
+        }
+
+        private void Button_KeyDown(object sender, KeyEventArgs e)
+        {
+
         }
     }
 }

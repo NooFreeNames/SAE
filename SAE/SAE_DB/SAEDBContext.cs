@@ -5,7 +5,6 @@ namespace SAE_DB
 {
     public partial class SAEDBContext : DbContext
     {
-
         public virtual DbSet<Discoverer> Discoverers { get; set; } = null!;
         public virtual DbSet<Exoplanet> Exoplanets { get; set; } = null!;
         public virtual DbSet<ExoplanetDetectionMethod> ExoplanetDetectionMethods { get; set; } = null!;

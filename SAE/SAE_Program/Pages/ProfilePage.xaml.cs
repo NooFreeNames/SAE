@@ -24,5 +24,24 @@ namespace SAE_Program.Pages
         {
             InitializeComponent();
         }
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            
+            UserNameBarEl.Visibility = Visibility.Collapsed;
+            UserNameLabelEl.Visibility = Visibility.Collapsed;
+            ConfirmPasswordBarEl.Visibility = Visibility.Collapsed;
+            ConfirmPasswordLabelEl.Visibility = Visibility.Collapsed;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click2(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

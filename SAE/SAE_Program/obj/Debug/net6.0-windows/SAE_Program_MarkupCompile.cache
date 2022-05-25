@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\App.xaml
-131074270309
+17-1256262429
 
-101148488161
+12-574178655
 2181166306149
-MainWindow.xaml;Pages\AddingCosmicBodyPage.xaml;Pages\MainPage.xaml;Pages\ProfilePage.xaml;Pages\SettingsPage.xaml;ResourceDictionarys\ButtonStyle.xaml;ResourceDictionarys\Colors.xaml;ResourceDictionarys\CosmicBodyNameStyle.xaml;ResourceDictionarys\GridSplitterStyle.xaml;ResourceDictionarys\ListViewStyle.xaml;ResourceDictionarys\PageStyle.xaml;ResourceDictionarys\SidebarStyle.xaml;ResourceDictionarys\WindowStyle.xaml;
+MainWindow.xaml;Pages\AddingCosmicBodyPage.xaml;Pages\MainPage.xaml;Pages\ProfilePage.xaml;Pages\SettingsPage.xaml;ResourceDictionarys\BorderStyle.xaml;ResourceDictionarys\ButtonStyle.xaml;ResourceDictionarys\Colors.xaml;ResourceDictionarys\Converters.xaml;ResourceDictionarys\GridSplitterStyle.xaml;ResourceDictionarys\LabelStyle.xaml;ResourceDictionarys\ListViewStyle.xaml;ResourceDictionarys\PageStyle.xaml;ResourceDictionarys\SidebarStyle.xaml;ResourceDictionarys\TextBlockStyle.xaml;ResourceDictionarys\TextBoxStyle.xaml;ResourceDictionarys\WindowStyle.xaml;
 
 False
 

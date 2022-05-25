@@ -7,13 +7,18 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ResourceDictionarys\Colors.xaml"></ResourceDictionary>
-                <ResourceDictionary Source="ResourceDictionarys\CosmicBodyNameStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="ResourceDictionarys\BorderStyle.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="ResourceDictionarys\GridSplitterStyle.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="ResourceDictionarys\ListViewStyle.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="ResourceDictionarys\PageStyle.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="ResourceDictionarys\SidebarStyle.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="ResourceDictionarys\WindowStyle.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="ResourceDictionarys\ButtonStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="ResourceDictionarys\TextBlockStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="ResourceDictionarys\LabelStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="ResourceDictionarys\TextBoxStyle.xaml"></ResourceDictionary>
+                
+                <ResourceDictionary Source="ResourceDictionarys\Converters.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

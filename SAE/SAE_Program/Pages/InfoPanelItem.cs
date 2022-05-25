@@ -14,7 +14,7 @@ namespace SAE_Program.Pages
 
             if (DescPropVal == null)
             {
-                NextFG = new SolidColorBrush(Colors.Black);
+                NextFG = null;
                 NextTT = null;
             }
             else
@@ -39,7 +39,7 @@ namespace SAE_Program.Pages
         public string? DescPropVal { get; set; }
 
 
-        public Brush NextFG { get; private set; }
+        public Brush? NextFG { get; private set; }
         public ToolTip? NextTT { get; private set; }
     }
 }
