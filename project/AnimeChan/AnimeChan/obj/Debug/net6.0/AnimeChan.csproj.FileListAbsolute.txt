@@ -1,5 +1,0 @@
-C:\Users\Study\Desktop\project_SAE\project\AnimeChan\AnimeChan\obj\Debug\net6.0\AnimeChan.csproj.AssemblyReference.cache
-C:\Users\Study\Desktop\project_SAE\project\AnimeChan\AnimeChan\obj\Debug\net6.0\AnimeChan.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Study\Desktop\project_SAE\project\AnimeChan\AnimeChan\obj\Debug\net6.0\AnimeChan.AssemblyInfoInputs.cache
-C:\Users\Study\Desktop\project_SAE\project\AnimeChan\AnimeChan\obj\Debug\net6.0\AnimeChan.AssemblyInfo.cs
-C:\Users\Study\Desktop\project_SAE\project\AnimeChan\AnimeChan\obj\Debug\net6.0\AnimeChan.csproj.CoreCompileInputs.cache
