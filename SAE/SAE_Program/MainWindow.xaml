@@ -35,6 +35,6 @@
 
             <Button Grid.Row="1" x:Name="ProfilePageBtn" Content="P" Click="GoToPage"></Button>
         </Grid>
-        <Frame x:Name="MainFrame" Grid.Column="1" NavigationUIVisibility="Hidden" Margin="3"></Frame>
+        <Frame x:Name="MainFrame" Grid.Column="1" NavigationUIVisibility="Hidden"  Margin="3"></Frame>
     </Grid>
 </Window>

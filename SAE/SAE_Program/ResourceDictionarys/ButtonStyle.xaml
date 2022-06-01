@@ -17,14 +17,14 @@
         </Setter>
     </Style>
 
-    <Style x:Key="ButtonBase" TargetType="Button">
+    <Style x:Key="ButtonBase" TargetType="ButtonBase">
         <Setter Property="SnapsToDevicePixels" Value="true"/>
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
 
     </Style>
     <!-- Button -->
-    <Style BasedOn="{StaticResource ButtonBase}" TargetType="Button">
+    <Style x:Key="ButtonStyle" BasedOn="{StaticResource ButtonBase}" TargetType="ButtonBase">
         <Setter Property="Foreground">
             <Setter.Value>
                 <SolidColorBrush Color="{StaticResource ComplementaryForeground}"></SolidColorBrush>
@@ -32,7 +32,7 @@
         </Setter>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="Button">
+                <ControlTemplate TargetType="ButtonBase">
                     <Border x:Name="Border"
                             Style="{StaticResource ButtonBorderStyle}">
 
@@ -83,5 +83,14 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style BasedOn="{StaticResource ButtonStyle}" TargetType="Button">
+        
+    </Style>
+
+    <Style BasedOn="{StaticResource ButtonStyle}" TargetType="RepeatButton">
+        <Setter Property="Interval" Value="100"></Setter>
+        <Setter Property="Delay" Value="500"></Setter>
     </Style>
 </ResourceDictionary>

@@ -20,7 +20,8 @@ SET time_zone = "+00:00";
 --
 -- База данных: `saedb`
 --
-
+CREATE SCHEMA IF NOT EXISTS `SAEDB` DEFAULT CHARACTER SET utf8mb4 ;
+USE `SAEDB` ;
 -- --------------------------------------------------------
 
 --
