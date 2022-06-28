@@ -9,11 +9,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Pages\avatar.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="6.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="6.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.1" />
+    <PackageReference Include="System.DirectoryServices.AccountManagement" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SAE_DB\SAE_DB.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Pages\ProfilePage\avatar.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,12 +41,21 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>MainWinSettings.settings</DependentUpon>
     </Compile>
+    <Compile Update="Properties\SessionSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SessionSettings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <None Update="Properties\MainWinSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>MainWinSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Properties\SessionSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>SessionSettings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
 

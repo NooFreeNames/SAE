@@ -3,24 +3,38 @@ using System.Collections.Generic;
 
 namespace SAE_DB
 {
-    public partial class User
+    public partial class User : IEntityWithUintId
     {
         public User()
         {
-            Exoplanets = new HashSet<Exoplanet>();
-            Stars = new HashSet<Star>();
+            ExoplanetUserWhoAddedNavigations = new HashSet<Exoplanet>();
+            ExoplanetUserWhoConfirmedNavigations = new HashSet<Exoplanet>();
+            Sessions = new HashSet<Session>();
+            StarUserWhoAddedNavigations = new HashSet<Star>();
+            StarUserWhoConfirmedNavigations = new HashSet<Star>();
+            ResearchGroups = new HashSet<ResearchGroup>();
         }
 
-        public int Id { get; set; }
+        public uint Id { get; set; }
         public string Name { get; set; } = null!;
         public string Email { get; set; } = null!;
-        public int PasswordHach { get; set; }
-        public int TupeUser { get; set; }
-        public int? ResearchGroup { get; set; }
+        public string PasswordHach { get; set; } = null!;
+        public TypeUserEnum TupeUser { get; set; }
+        public DateTime RegistrationDataTime { get; set; }
 
-        public virtual ResearchGroup? ResearchGroupNavigation { get; set; }
-        public virtual UserType TupeUserNavigation { get; set; } = null!;
-        public virtual ICollection<Exoplanet> Exoplanets { get; set; }
-        public virtual ICollection<Star> Stars { get; set; }
+        public virtual ICollection<Exoplanet> ExoplanetUserWhoAddedNavigations { get; set; }
+        public virtual ICollection<Exoplanet> ExoplanetUserWhoConfirmedNavigations { get; set; }
+        public virtual ICollection<Session> Sessions { get; set; }
+        public virtual ICollection<Star> StarUserWhoAddedNavigations { get; set; }
+        public virtual ICollection<Star> StarUserWhoConfirmedNavigations { get; set; }
+
+        public virtual ICollection<ResearchGroup> ResearchGroups { get; set; }
+    }
+
+    public enum TypeUserEnum
+    {
+        None,
+        Scientist,
+        Admin,
     }
 }

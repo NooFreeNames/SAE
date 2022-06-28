@@ -1,0 +1,80 @@
+﻿<Page x:Class="SAE_Program.Pages.ChangesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:intr="clr-namespace:Microsoft.Xaml.Behaviors;assembly=Microsoft.Xaml.Behaviors"
+      xmlns:local="clr-namespace:SAE_Program.Pages"
+      xmlns:uc="clr-namespace:SAE_Program.UserControls"
+      xmlns:sae="clr-namespace:SAE_Program"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="400"
+      Title="ChangesPage"
+      Style="{StaticResource PageStyle}">
+
+    <intr:Interaction.Triggers>
+        <intr:EventTrigger EventName="Loaded">
+            <intr:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+        </intr:EventTrigger>
+        <intr:EventTrigger EventName="Unloaded">
+            <intr:InvokeCommandAction Command="{Binding UnLoadedCommand}"/>
+        </intr:EventTrigger>
+    </intr:Interaction.Triggers>
+    
+    <Grid>
+        <Border Style="{StaticResource ContainerBorderStyle}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Visibility="{Binding Path=IsEmpty, Converter={StaticResource VisibilityConverter}}">Космический обект</TextBlock>
+                <ComboBox Grid.Row="0" Grid.Column="1" 
+                          ItemsSource="{Binding Path=(sae:GeneralInfoFromDB.CelestialObjectTypeList)}" 
+                          SelectedItem="{Binding Path=CelestialObjectType}" 
+                          Visibility="{Binding Path=IsEmpty, Converter={StaticResource VisibilityConverter}}">
+                </ComboBox>
+                <TextBlock Grid.Row="1" Grid.Column="0">Имя</TextBlock>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+
+                <TextBlock Grid.Row="2" Grid.Column="0">Статус</TextBlock>
+                <ComboBox Grid.Row="2" Grid.Column="1" IsEnabled="{Binding Path=UserIsAdmin}" ItemsSource="{Binding Path=(sae:GeneralInfoFromDB.StatusList)}" SelectedItem="{Binding Path=Status}"></ComboBox>
+                <TextBlock Grid.Row="3" Grid.Column="0">Масса</TextBlock>
+                <uc:ValidationTextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=Mass, UpdateSourceTrigger=PropertyChanged}"></uc:ValidationTextBox>
+                <TextBlock Grid.Row="4" Grid.Column="0">Радиус</TextBlock>
+                <uc:ValidationTextBox Grid.Row="4" Grid.Column="1" Text="{Binding Path=Radius, UpdateSourceTrigger=PropertyChanged}"></uc:ValidationTextBox>
+                <TextBlock Grid.Row="5" Grid.Column="0">Радиус орбиты</TextBlock>
+                <uc:ValidationTextBox Grid.Row="5" Grid.Column="1" Text="{Binding Path=OrbitalRadius, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=IsExoplenetType}"></uc:ValidationTextBox>
+                <TextBlock Grid.Row="6" Grid.Column="0">Метод обнаружения</TextBlock>
+                <uc:NullableComboBox Grid.Row="6" Grid.Column="1" 
+                          ItemsSource="{Binding Path=CurrentDetectionMethodList}" 
+                          SelectedItem="{Binding Path=DetectionMethod}"/>
+                <TextBlock Grid.Row="7" Grid.Column="0">Тип</TextBlock>
+                <uc:NullableComboBox Grid.Row="7" Grid.Column="1" 
+                          ItemsSource="{Binding Path=CurrentTypeList}" 
+                          SelectedItem="{Binding Path=Type}"/>
+                <TextBlock Grid.Row="8" Grid.Column="0">Первооткрыватель</TextBlock>
+                <uc:NullableComboBox Grid.Row="8" Grid.Column="1"
+                                     ItemsSource="{Binding Path=(sae:GeneralInfoFromDB.DiscovererList)}"
+                                     SelectedItem="{Binding Path=Discoverer}"/>
+                <TextBlock Grid.Row="9" Grid.Column="0" VerticalAlignment="Top">Описание</TextBlock>
+                <TextBox Grid.Row="9" Grid.Column="1" Style="{StaticResource MultilineTextBoxStyle}" Text="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ReplaceEmptyWithNullConverter}}"></TextBox>
+                <Button Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="0, 5,0,0" Command="{Binding Path=CommitCommand}">Подтвердить</Button>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

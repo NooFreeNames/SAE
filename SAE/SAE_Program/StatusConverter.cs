@@ -11,11 +11,11 @@ namespace SAE_Program
 {
     public class StatusConverter : IValueConverter
     {
-        const string confirmed = "Подтверждено";
-        const string notConfirmed = "Не подтверждено";
+        public const string confirmed = "Подтверждено";
+        public const string notConfirmed = "Не подтверждено";
         public object Convert(object value, Type? targetType = null, object? parameter = null, CultureInfo? culture = null)
         {
-            return (sbyte)value == 0 ? notConfirmed : confirmed;
+            return (SAE_DB.StatusEnum)value == SAE_DB.StatusEnum.NotConfirmed ? notConfirmed : confirmed;
             
         }
 
@@ -23,9 +23,9 @@ namespace SAE_Program
         {
             if ((string)value == confirmed)
             {
-                return 1;
+                return SAE_DB.StatusEnum.Confirmed.ToString();
             }
-            return 0;
+            return SAE_DB.StatusEnum.NotConfirmed.ToString();
         }
     }
 }

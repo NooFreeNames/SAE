@@ -2,8 +2,12 @@
 FC:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\App.xaml;;
 FC:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\MainWindow.xaml;;
 FC:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\Pages\AddingCosmicBodyPage.xaml;;
-FC:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\Pages\MainPage.xaml;;
-FC:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\Pages\ProfilePage.xaml;;
+FC:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\Pages\MainPage\ChangePage.xaml;;
+FC:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\Pages\MainPage\MainPage.xaml;;
+FC:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\Pages\MainPage\ViewingPage.xaml;;
+FC:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\Pages\ProfilePage\ProfilePage.xaml;;
 FC:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\Pages\SettingsPage.xaml;;
+FC:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\ResourceDictionarys\ComboBoxStyle.xaml;;
 FC:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\ResourceDictionarys\Converters.xaml;;
+FC:\Users\Study\Desktop\project_SAE\SAE\SAE_Program\UserControls\NumberBox1.xaml;;
 

@@ -2,9 +2,11 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:SAE_Program"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            <sys:String x:Key="NullStr">(нет значения)</sys:String>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ResourceDictionarys\Colors.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="ResourceDictionarys\BorderStyle.xaml"></ResourceDictionary>
@@ -18,9 +20,11 @@
                 <ResourceDictionary Source="ResourceDictionarys\LabelStyle.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="ResourceDictionarys\TextBoxStyle.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="ResourceDictionarys\ToolTipStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="ResourceDictionarys\ComboBoxStyle.xaml"></ResourceDictionary>
                 
                 <ResourceDictionary Source="ResourceDictionarys\Converters.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
+        
     </Application.Resources>
 </Application>

@@ -13,6 +13,9 @@ namespace SAE_Program
     /// </summary>
     public partial class App : Application
     {
-
+        public App() : base()
+        {
+            FrameworkCompatibilityPreferences.KeepTextBoxDisplaySynchronizedWithTextProperty = false;
+        }
     }
 }

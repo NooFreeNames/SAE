@@ -6,22 +6,46 @@ using System.Threading.Tasks;
 
 namespace SAE_DB
 {
-    public class CelestialObject
+    public abstract class CelestialObject : NamedEntityWithUlongId, ICloneable
     {
-        public int Id { get; set; }
-        public string Name { get; set; } = null!;
-        public sbyte Status { get; set; }
-        public DateOnly DateAdded { get; set; }
-        public DateOnly? DateConfirmation { get; set; }
+        public StatusEnum Status { get; set; } 
+        public DateTime DateTimeAdded { get; set; }
+        public DateTime? DateTimeConfirmation { get; set; }
         public float? Mass { get; set; }
         public float? Radius { get; set; }
-        public int? User { get; set; }
-        public int? DetectionMethod { get; set; }
-        public int? Type { get; set; }
-        public int? Discoverer { get; set; }
+        public uint? UserWhoAdded { get; set; }
+        public uint? UserWhoConfirmed { get; set; }
+        public byte? DetectionMethod { get; set; }
+        public byte? Type { get; set; }
+        public uint? Discoverer { get; set; }
 
         public virtual Discoverer? DiscovererNavigation { get; set; }
-        public virtual User? UserNavigation { get; set; }
+        public virtual User? UserWhoAddedNavigation { get; set; }
+        public virtual User? UserWhoConfirmedNavigation { get; set; }
+
+        public abstract NamedEntityWithByteId? GetDetectionMethod();
+        public abstract NamedEntityWithByteId? Get_Type();
+        public virtual void SetDetectionMethod(NamedEntityWithByteId? detectionMethod)
+        {
+            if (DetectionMethod is null)
+            {
+                DetectionMethod = detectionMethod?.Id;
+            } 
+        }
+        public virtual void SetType(NamedEntityWithByteId? type)
+        {
+            Type = type?.Id;
+        }
+        public virtual object Clone()
+        {
+            return MemberwiseClone();
+        }
+    }
+
+    public enum StatusEnum
+    {
+        NotConfirmed,
+        Confirmed,
     }
 
     public enum CelestialObjectEnum
@@ -37,8 +61,8 @@ namespace SAE_DB
         Id,
         Name,
         Status,
-        DateAdded,
-        DateConfirmation,
+        DateTimeAdded,
+        DateTimeConfirmation,
         Mass,
         Radius,
         OrbitalRadius,

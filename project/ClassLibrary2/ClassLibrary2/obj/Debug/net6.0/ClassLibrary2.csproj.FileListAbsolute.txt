@@ -1,0 +1,13 @@
+C:\Users\Study\Desktop\project_SAE\project\ClassLibrary2\ClassLibrary2\obj\Debug\net6.0\ClassLibrary2.csproj.AssemblyReference.cache
+C:\Users\Study\Desktop\project_SAE\project\ClassLibrary2\ClassLibrary2\obj\Debug\net6.0\ClassLibrary2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Study\Desktop\project_SAE\project\ClassLibrary2\ClassLibrary2\obj\Debug\net6.0\ClassLibrary2.AssemblyInfoInputs.cache
+C:\Users\Study\Desktop\project_SAE\project\ClassLibrary2\ClassLibrary2\obj\Debug\net6.0\ClassLibrary2.AssemblyInfo.cs
+C:\Users\Study\Desktop\project_SAE\project\ClassLibrary2\ClassLibrary2\obj\Debug\net6.0\ClassLibrary2.csproj.CoreCompileInputs.cache
+C:\Users\Study\Desktop\project_SAE\project\ClassLibrary2\ClassLibrary2\bin\Debug\net6.0\ClassLibrary2.dll.config
+C:\Users\Study\Desktop\project_SAE\project\ClassLibrary2\ClassLibrary2\bin\Debug\net6.0\ClassLibrary2.deps.json
+C:\Users\Study\Desktop\project_SAE\project\ClassLibrary2\ClassLibrary2\bin\Debug\net6.0\ClassLibrary2.dll
+C:\Users\Study\Desktop\project_SAE\project\ClassLibrary2\ClassLibrary2\bin\Debug\net6.0\ClassLibrary2.pdb
+C:\Users\Study\Desktop\project_SAE\project\ClassLibrary2\ClassLibrary2\obj\Debug\net6.0\ClassLibrary2.dll
+C:\Users\Study\Desktop\project_SAE\project\ClassLibrary2\ClassLibrary2\obj\Debug\net6.0\refint\ClassLibrary2.dll
+C:\Users\Study\Desktop\project_SAE\project\ClassLibrary2\ClassLibrary2\obj\Debug\net6.0\ClassLibrary2.pdb
+C:\Users\Study\Desktop\project_SAE\project\ClassLibrary2\ClassLibrary2\obj\Debug\net6.0\ref\ClassLibrary2.dll

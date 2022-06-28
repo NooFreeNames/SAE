@@ -73,7 +73,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
-                    <Border Padding="0">
+                    <Border Padding="0" >
                         <Rectangle Width="2">
                             <Rectangle.Fill>
                                 <SolidColorBrush Color="{StaticResource ComplementaryColor}"/>
@@ -95,6 +95,7 @@
                 <SolidColorBrush Color="{DynamicResource MainForeground}"></SolidColorBrush>
             </Setter.Value>
         </Setter>
+        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="GridViewColumnHeader">
@@ -107,16 +108,16 @@
                                 <VisualState x:Name="Disabled" />
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Border x:Name="HeaderBorder" BorderThickness="0">
+                        <Border x:Name="HeaderBorder">
                             <Border.Background>
                                 <SolidColorBrush x:Name="SolidColorBrush" Color="{StaticResource MainColor}"/>
                             </Border.Background>
-                            <ContentPresenter x:Name="HeaderContent"  Margin="5,0,5,0"  RecognizesAccessKey="True" 
+                            <ContentPresenter  x:Name="HeaderContent"  Margin="5,0,5,0"  RecognizesAccessKey="True" 
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
                                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </Border>
-                        <Thumb x:Name="PART_HeaderGripper" HorizontalAlignment="Right" Margin="0,0,0,0" 
+                        <Thumb x:Name="PART_HeaderGripper" HorizontalAlignment="Right"
                                Style="{StaticResource GridViewColumnHeaderGripper}" />
                     </Grid>
                 </ControlTemplate>
@@ -197,10 +198,11 @@
        TargetType="ListViewItem">
         <Setter Property="SnapsToDevicePixels" Value="true"/>
         <Setter Property="OverridesDefaultStyle" Value="true"/>
+        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">
-                    <Border x:Name="Border" Padding="2" SnapsToDevicePixels="true" Background="Transparent">
+                    <Border x:Name="Border" SnapsToDevicePixels="true" Background="Transparent">
                         <GridViewRowPresenter x:Name="GridViewRowPresenter" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                             <TextBlock.Foreground>
                                 <SolidColorBrush Color="{StaticResource MainForeground}"></SolidColorBrush>
@@ -256,7 +258,6 @@
 
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

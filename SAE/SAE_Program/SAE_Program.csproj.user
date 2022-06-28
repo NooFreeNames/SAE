@@ -10,21 +10,42 @@
     <Compile Update="Pages\AddingCosmicBodyPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Pages\MainPage.xaml.cs">
+    <Compile Update="Pages\MainPage\ChangePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Pages\ProfilePage.xaml.cs">
+    <Compile Update="Pages\MainPage\ViewingPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\MainPage\MainPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\ProfilePage\ProfilePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Pages\SettingsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UserControls\NumberBox1.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Pages\MainPage\ChangePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\MainPage\ViewingPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\ProfilePage\ProfilePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="ResourceDictionarys\ButtonStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ResourceDictionarys\Colors.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ResourceDictionarys\ComboBoxStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ResourceDictionarys\GridSplitterStyle.xaml">
@@ -42,13 +63,10 @@
     <Page Update="Pages\AddingCosmicBodyPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Pages\MainPage.xaml">
+    <Page Update="Pages\MainPage\MainPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Pages\ProfilePage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\SettingsPage.xaml">
@@ -73,6 +91,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ResourceDictionarys\WindowStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\NumberBox1.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

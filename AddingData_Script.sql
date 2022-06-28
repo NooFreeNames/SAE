@@ -5,20 +5,15 @@ INSERT INTO `RESEARCH_GROUP` (`Name`, `Description`) VALUES
 ('Анонимы', NULL),
 ('Черная дыра', 'Мы не хотим туда');
 
-INSERT INTO `USER_TYPE` (`Name`, `Description`) VALUES 
-('Администратор', 'Пользователь с полными правами'),
-('Ученый', 'Пользователь с ограниченными правами'),
-('Обычеый аккаунт', 'Только для чтения'),
-('Аноним', NULL);
 
 INSERT INTO `USER` 
-(`Name`, `Email`, `PasswordHach`, `TupeUser`, `ResearchGroup`) VALUES
-('Максим', 'Max312@gmail.com', '672131', '1', '2'),
-('Сёма', 'lolmail@mail.com', '123123', '4', '4'),
-('User13', '13User13@gmail.com', '341234', '4', '2'),
-('Вася', 'qwerty@outlook.com', '213412', '3', NULL),
-('Игнат', 'IgnatMail@gmail.com', '112233', '2', '1'),
-('Сом', 'SOM3000@mail.com', '672131', '3', NULL);
+(`Name`, `Email`, `PasswordHach`, `TupeUser`, `RegistrationDataTime`) VALUES
+('Максим', 'Max312@gmail.com', '672131', "Scientist", '2001-02-02'),
+('Сёма', 'lolmail@mail.com', '123123', "None", '2001-02-02'),
+('User13', '13User13@gmail.com', '341234', "Admin", '2001-02-02'),
+('Вася', 'qwerty@outlook.com', '213412', "Scientist", '2001-02-02'),
+('Игнат', 'IgnatMail@gmail.com', '112233', "Scientist", '2001-02-02'),
+('Сом', 'SOM3000@mail.com', '672131', "Scientist", '2001-02-02');
 
 INSERT INTO `EXOPLANET_DETECTION_METHOD`
 (`Name`, `Description`) VALUES
@@ -45,7 +40,7 @@ INSERT INTO `DISCOVERER`
 ('Иоганн Кеплер', 'Древний ученый');
 
 INSERT INTO `EXOPLANET` 
-(`Name`, `Status`, `DateAdded`, `DateConfirmation`, `Mass`, `Radius`, `OrbitalRadius`, `User`, `DetectionMethod`, `Type`, `Discoverer`) VALUES
+(`Name`, `Status`, `DateTimeAdded`, `DateTimeConfirmation`, `Mass`, `Radius`, `OrbitalRadius`, `UserWhoAdded`, `DetectionMethod`, `Type`, `Discoverer`) VALUES
 ('Смеиана', '1', '2013-02-11', '2015-03-07', '5', '2', '4', '5', '3', '5', '1'),
 ('Григорий', '0', '2022-02-11', NULL, NULL, NULL, '6', '1', '5', NULL, '1'),
 ('София', '1', '2010-08-23', '2012-05-21', '7', '5', '4', '1', '2', '1', '2'),
@@ -73,7 +68,7 @@ INSERT INTO `STAR_DETECTION_METHOD`
 
 
 INSERT INTO `STAR` 
-(`Name`, `Status`, `DateAdded`, `DateConfirmation`, `Mass`, `Radius`, `User`, `DetectionMethod`, `Type`, `Discoverer`) VALUES
+(`Name`, `Status`, `DateTimeAdded`, `DateTimeConfirmation`, `Mass`, `Radius`, `UserWhoAdded`, `DetectionMethod`, `Type`, `Discoverer`) VALUES
 ('Пугачева', '1', '1949-04-15', '1980-06-26', '65', '17', '5', '2', '8', '1'),
 ('Бетельгейзе', '1', '1900-05-12', '1900-05-12', '6', '3', NULL, '2', '2', '3'),
 ('Рок Звезда', '1', '1949-04-15', '1980-06-26', '65', '17', '5', '2', '1', '1'),

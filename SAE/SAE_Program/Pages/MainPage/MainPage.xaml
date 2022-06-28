@@ -1,0 +1,113 @@
+﻿<Page x:Class="SAE_Program.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SAE_Program"
+      xmlns:uc="clr-namespace:SAE_Program.UserControls"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Style="{StaticResource PageStyle}"
+      x:Name="MainPageEl">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" MinWidth="300"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="1.5*" MinWidth="300"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Frame Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Content="{Binding Path=CurrentPage}"></Frame>
+            
+         <!--Splitter--> 
+        <GridSplitter Grid.Column="1" Grid.Row="0" Grid.RowSpan="4"/>
+
+         <!--Search--> 
+        <Border Grid.Row="0" Grid.Column="2" Style="{StaticResource ContainerBorderStyle}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <TextBox Grid.Column="0" x:Name="searchBarEl" Text="{Binding Path=SearchString, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <Button Grid.Column="1" Content="_Фильтры" Click="Button_Click"></Button>
+            </Grid>
+        </Border>
+        
+         <!--Filters--> 
+        <Border x:Name="filtersEl" Grid.Row="1" Grid.Column="2" Visibility="Collapsed" Style="{StaticResource ContainerBorderStyle}">
+            <Grid DataContext="{Binding Path=SearchFiltrs}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0">Тип</TextBlock>
+                <ComboBox Grid.Column="1" MinWidth="0" SelectedItem="{Binding Path=Type}" ItemsSource="{Binding Path=TypeList}"></ComboBox>
+                <TextBlock Grid.Column="2">Искать по</TextBlock>
+                <ComboBox Grid.Column="3" MinWidth="0" SelectedItem="{Binding Path=SearchBy}" ItemsSource="{Binding Path=PropList}"></ComboBox>
+                <TextBlock Grid.Column="4">Сортировать по</TextBlock>
+                <ComboBox Grid.Column="5" MinWidth="0" SelectedItem="{Binding Path=OrderBy}" ItemsSource="{Binding Path=PropList}"></ComboBox>
+            </Grid>
+        </Border>
+
+         <!--CosmicBodyList--> 
+        <Border Grid.Row="2" Grid.Column="2" Style="{StaticResource ContainerBorderStyle}">
+            <ListView x:Name="CelestialObjectListEl" Grid.Row="2" Grid.Column="2" SelectedItem="{Binding Path=SelectedCelestialObject}" ItemsSource="{Binding Path=CelestialObjectList, Mode=OneWay}">
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Command="{Binding Path=ViewingModeCommand}" Header="Режим просмотра..."></MenuItem>
+                        <MenuItem Command="{Binding Path=EditingModeCommand}" Header="Режим изменения..."></MenuItem>
+                        <MenuItem Command="{Binding Path=AddingModeCommand}" Header="Режим добавления..."></MenuItem>
+                        <MenuItem Command="{Binding Path=RemoveCommand}" Header="Удалить"></MenuItem>
+                    </ContextMenu>
+                </ListView.ContextMenu>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="Auto" Header="Id" DisplayMemberBinding="{Binding Path=Id}"></GridViewColumn>
+                        <GridViewColumn Width="Auto" Header="Статус" DisplayMemberBinding="{Binding Path=Status, Converter={StaticResource StatusConverter}}"></GridViewColumn>
+                        <GridViewColumn Width="Auto" Header="Название" DisplayMemberBinding="{Binding Path=Name}"></GridViewColumn>
+                        <GridViewColumn Width="Auto" Header="Тип" DisplayMemberBinding="{Binding Path=TypeNavigation.Name, FallbackValue={StaticResource NullStr}}"></GridViewColumn>
+                        <GridViewColumn Width="Auto" Header="Метогд открытия" DisplayMemberBinding="{Binding Path=DetectionMethodNavigation.Name, FallbackValue={StaticResource NullStr}}"></GridViewColumn>
+                        <GridViewColumn Width="Auto" Header="Дата добовления" DisplayMemberBinding="{Binding Path=DateTimeAdded, Converter={StaticResource DateTimeConverter}}"></GridViewColumn>
+                        <GridViewColumn Width="Auto" Header="Дата подтверждения" DisplayMemberBinding="{Binding Path=DateTimeConfirmation, Converter={StaticResource DateTimeConverter}, TargetNullValue={StaticResource NullStr}}"></GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Border>
+
+         <!--PagesButtons--> 
+        <Border Grid.Row="3" Grid.Column="2" Style="{StaticResource ContainerBorderStyle}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Command="{Binding Path=FirstPageCommand}">&lt;&lt;</Button>
+                <RepeatButton Grid.Column="1" Margin="5,0,0,0" Command="{Binding Path=PrevPageCommand}">&lt;</RepeatButton>
+                <TextBox Grid.Column="2" DefaultValue="1" Margin="5,0,5,0" MinWidth="50" Text="{Binding Path=CurrentPageNum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <TextBlock Grid.Column="3" Margin="0,0,5,0">/ <TextBlock Text="{Binding Path=MaxPageNum}"></TextBlock></TextBlock>
+                <RepeatButton Grid.Column="4" Margin="0,0,5,0" Command="{Binding Path=NextPageCommand}">></RepeatButton>
+                <Button Grid.Column="5" Command="{Binding Path=LastPageCommand}">>></Button>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

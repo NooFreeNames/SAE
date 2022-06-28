@@ -2,5 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:SAE_Program">
 
-    <local:StatusConverter x:Key="StatusConverter" />
+    <local:StatusConverter x:Key="StatusConverter"/>
+    <local:DateTimeConverter x:Key="DateTimeConverter"/>
+    <local:VisibilityConverter x:Key="VisibilityConverter"/>
+    <local:NullReplaceConverter x:Key="NullReplaceConverter"></local:NullReplaceConverter>
+    <local:EnumerableNullReplaceConverter x:Key="EnumerableNullReplaceConverter"></local:EnumerableNullReplaceConverter>
+    <local:ReplaceEmptyWithNullConverter x:Key="ReplaceEmptyWithNullConverter"></local:ReplaceEmptyWithNullConverter>
 </ResourceDictionary>

@@ -19,7 +19,7 @@ namespace SAE_Program
         public MainWindow()
         {
             InitializeComponent();
-            
+            App.Current.MainWindow = this;
             var position = MainWinSettings.Default.Position;
             if (position.IsEmpty || !MainWinSettings.Default.RememberPosition)
             {
